@@ -14,11 +14,13 @@ class Torch {
 		if (this.t < 116) {
 			noStroke();
 
-			fill(255, 200, 150, 3);
+			fill(205, 225, 215, 2);
+			ellipse(0, 40 + this.t, 15 * (7 + this.noise));
+			fill(205, 245, 205, 3);
 			ellipse(0, 40 + this.t, 20 * (7 + this.noise));
-			fill(255, 200, 150, 5);
+			fill(205, 245, 205, 4);
 			ellipse(0, 40 + this.t, 25 * (7 + this.noise));
-			fill(255, 200, 150, 10);
+			fill(205, 245, 205, 16);
 			ellipse(0, 40 + this.t, 30 * (7 + this.noise));
 
 			fill(255, 80 + 10 * this.noise, 60 + 50 * this.noise, 100);
