@@ -49,7 +49,7 @@ function changeRES() {
 }
 
 function draw() {
-	background(100, 0, 150);
+	background(15, 0, 5);
 
 	time = time + .1;
 	walls = maze.updateGrid(round(observer.pos.x), round(observer.pos.y));
