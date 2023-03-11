@@ -24,7 +24,6 @@ function setup() {
 	observer = new Observer(0, 500);
 	maze = new Grid(renDist);
 	walls = maze.updateGrid(round(observer.pos.x), round(observer.pos.y));
-/* 	walls = maze.updateGrid(round(observer.pos.x), round(observer.pos.y)); */
 
 	sliderFOV = createSlider(50, 150, observer.fov);
 	sliderFOV.input(changeFOV);
@@ -50,7 +49,7 @@ function changeRES() {
 }
 
 function draw() {
-	background(1, 0, 5);
+	background(1, 0, 50);
 
 	time = time + .1;
 	walls = maze.updateGrid(round(observer.pos.x), round(observer.pos.y));
