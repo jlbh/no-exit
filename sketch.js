@@ -21,7 +21,7 @@ function setup() {
 	noCursor();
 	createCanvas(windowWidth, windowHeight-4);
 
-	observer = new Observer(0, 500);
+	observer = new Observer(100, 100);
 	maze = new Grid(renDist);
 	walls = maze.updateGrid(round(observer.pos.x), round(observer.pos.y));
 
@@ -91,7 +91,6 @@ function draw() {
 	}
 	pop();
 	torch.show();
-	console.log(frameRate());
 }
 
 function keyPressed() {

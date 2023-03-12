@@ -9,9 +9,10 @@ class Grid {
     constructor(r) {
         this.r = round(r);
         this.grid = [];
-        for (let j=0; j<1000 * this.r; j++) {
+        for (let j=0; j<200; j++) {
             this.grid[j] = [];
         }
+        this.grid[100][100] = [0, 0, 0, 0]
     }
 
     collapseTile(x, y) {
