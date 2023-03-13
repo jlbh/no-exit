@@ -51,7 +51,7 @@ function changeRES() {
 function draw() {
 	background(15, 0, 5);
 
-	time = time + .1;
+	time = time + .2;
 	walls = maze.updateGrid(round(observer.pos.x), round(observer.pos.y));
 
 	sliderRES.position(width / 2 - 75, height / 2);
