@@ -4,7 +4,7 @@ class Observer {
         this.dir = 0.;
 
         this.fov = 100;
-        this.res = 25_000;
+        this.res = 10_000;
 
         this.crdx = sin(radians(this.fov) / 2);
         this.crdy = sqrt(1 - this.crdx * this.crdx);
