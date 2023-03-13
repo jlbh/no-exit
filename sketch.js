@@ -29,7 +29,7 @@ function setup() {
 	sliderFOV.input(changeFOV);
 	sliderFOV.hide();
 
-	sliderRES = createSlider(1, 100_000, observer.res);
+	sliderRES = createSlider(1, 50_000, observer.res);
 	sliderRES.input(changeRES);
 	sliderRES.hide();
 
@@ -49,9 +49,9 @@ function changeRES() {
 }
 
 function draw() {
-	background(15, 0, 5);
+	background(2, 0, 10);
 
-	time = time + .2;
+	time = time + .1;
 	walls = maze.updateGrid(round(observer.pos.x), round(observer.pos.y));
 
 	sliderRES.position(width / 2 - 75, height / 2);
@@ -62,12 +62,12 @@ function draw() {
 	if (abs(mouseX - width / 2) > width / 16) observer.rotate(mouseX - width / 2);
 
 	if (keyIsDown(87)) {
+		torch = new Torch(mouseX, 2 * height / 3 + 9 * sin(2 * time), time, tlim);
 		if (keyIsDown(32)) {
+			time = time + .1;
 			observer.move(2);
-			torch = new Torch(mouseX, 2 * height / 3 + 9 * sin(4 * time), time, tlim);
 		} else {
 			observer.move(1);
-			torch = new Torch(mouseX, 2 * height / 3 + 9 * sin(2 * time), time, tlim);
 		}
 	} else torch = new Torch(mouseX, 2 * height / 3, time, tlim);
 
@@ -80,14 +80,13 @@ function draw() {
 		let b = map(scene[i], 0, 7 * (bri / 100), bri, 0);
 		const h = height / (2 * scene[i] * tan(radians(observer.fov) / 2));
 		
-		strokeWeight(1);
 		if (time > tlim) {
 			b = 0;
 		}
-		stroke(b + 2, 0, 10);
-		fill(b + 2, 0, 10);
+		noStroke();
+		fill(b + 5, 0, 20);
 		rectMode(CENTER);
-		rect(i * w + w / 2, height / 2, w, h);
+		rect(i * w + w / 2, height / 2, w + 1, h);
 	}
 	pop();
 	torch.show();

@@ -26,7 +26,7 @@ class Observer {
     }
 
     rotate(angle) {
-        this.dir += .000066 * angle;
+        this.dir += .00005* angle;
         let index = 0;
         for (let x =- this.crdx; x < this.crdx; x += this.fov / this.res) {
             const a = atan(x / this.crdy);
