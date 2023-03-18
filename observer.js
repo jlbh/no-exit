@@ -18,15 +18,14 @@ class Observer {
     }
 
     move(length) {
-        if (length == 2) this.speed = 0.02;
-        else this.speed = 0.01;
+        this.speed = 0.007 * length;
         const vel = p5.Vector.fromAngle(this.dir);
         vel.setMag(this.speed);
         this.pos.add(vel);
     }
 
     rotate(angle) {
-        this.dir += .00005* angle;
+        this.dir += .00004* angle;
         let index = 0;
         for (let x =- this.crdx; x < this.crdx; x += this.fov / this.res) {
             const a = atan(x / this.crdy);
