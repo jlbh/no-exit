@@ -92,12 +92,7 @@ function draw() {
 
 	if (abs(mouseX - width / 2) > width / 12) observer.rotate(mouseX - width / 2);
 
-	console.log(height / 2)
-	console.log(mouseY / 2)
-
-	if (mouseY < height / 2) {
-		observer.move(4 * (0.5 - mouseY / height));
-	}
+	if (mouseY < height / 2) observer.move(4 * (0.5 - mouseY / height));
 
 	const scene = observer.look(walls);
 	let w = width / scene.length;
