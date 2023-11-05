@@ -14,7 +14,7 @@ let time = 0.;
 let pause = false;
 
 function windowResized() {
-    resizeCanvas(windowWidth, windowHeight);
+    	resizeCanvas(windowWidth, windowHeight);
 }
 
 function setup() {
