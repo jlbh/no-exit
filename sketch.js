@@ -28,6 +28,36 @@ function setup() {
 	sliderFOV = createSlider(50, 150, observer.fov);
 	sliderFOV.input(changeFOV);
 	sliderFOV.hide();
+let torch;
+let observer;
+let maze;
+let walls;
+
+let sliderFOV;
+let sliderRES;
+let sliderBRI;
+
+const tlim = 500;
+const renDist = 4;
+
+let time = 0.;
+let pause = false;
+
+function windowResized() {
+    resizeCanvas(windowWidth, windowHeight);
+}
+
+function setup() {
+	noCursor();
+	createCanvas(windowWidth, windowHeight);
+
+	observer = new Observer(100, 100);
+	maze = new Grid(renDist);
+	walls = maze.updateGrid(round(observer.pos.x), round(observer.pos.y));
+
+	sliderFOV = createSlider(50, 150, observer.fov);
+	sliderFOV.input(changeFOV);
+	sliderFOV.hide();
 
 	sliderRES = createSlider(1, 50_000, observer.res);
 	sliderRES.input(changeRES);
@@ -53,6 +83,7 @@ function draw() {
 
 	time = time + .05;
 	walls = maze.updateGrid(round(observer.pos.x), round(observer.pos.y));
+	torch = new Torch(mouseX, mouseY, time, tlim);
 
 	sliderRES.position(width / 2 - 75, height / 2);
 	sliderFOV.position(width / 2 - 75, height / 2 - 30);
@@ -61,15 +92,12 @@ function draw() {
 
 	if (abs(mouseX - width / 2) > width / 12) observer.rotate(mouseX - width / 2);
 
-	if (keyIsDown(87)) {
-		torch = new Torch(mouseX, 2 * height / 3 + 9 * sin(4 * time), time, tlim);
-		if (keyIsDown(32)) {
-			time = time + .05;
-			observer.move(2);
-		} else {
-			observer.move(1);
-		}
-	} else torch = new Torch(mouseX, 2 * height / 3, time, tlim);
+	console.log(height / 2)
+	console.log(mouseY / 2)
+
+	if (mouseY < height / 2) {
+		observer.move(4 * (0.5 - mouseY / height));
+	}
 
 	const scene = observer.look(walls);
 	let w = width / scene.length;
